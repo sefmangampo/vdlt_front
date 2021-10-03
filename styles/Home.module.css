@@ -1,3 +1,4 @@
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -26,22 +27,20 @@
 }
 
 .searchbox {
-  margin-top: 1em;
-  height: 60px;
-  width: 300px;
-  border-radius: 5px;
-  box-shadow: 1px 2px 5px #444655;
-  font-size: 20px;
-  text-align: center;
+  margin-top: 2em;
 }
 
 .browsebutton {
   margin-top: 5em;
+}
+
+.button {
   height: 60px;
-  width: 300px;
-  font-size: 20px;
-  border-radius: 5px;
-  box-shadow: 1px 2px 5px #444655;
+}
+
+.autoComplete {
+  background-color: #Fff;
+  text-align: center;
 }
 
 .subtitle {

@@ -1,0 +1,44 @@
+.container {
+width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #5D5FEF;
+}
+
+.head {
+  background-color: #444655;
+  height: 80px;
+}
+
+.body{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  padding-top: 1em;
+  text-align-last: left;
+  height: 100px;
+
+}
+
+.letterHeader{
+    text-transform: uppercase;
+    font-size: 70px;
+    font-weight: bold;
+    padding-left: 0.5em;
+    color: #fff;
+}
+
+.letterEntry{
+    text-transform: uppercase;
+    font-size: 70px;
+    font-weight: bold;
+    padding-left: 0.5em;
+    color: #fff;
+}
+
+
+.itemList{
+    background-color: white;
+    height: calc(100vh - 180px);
+}
