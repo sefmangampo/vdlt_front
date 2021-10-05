@@ -7,9 +7,9 @@ import Header from "./components/Header";
 
 export default function Browseindexes() {
   const [alphabets, setAlphabets] = useState([]);
+  const router = useRouter();
 
   const onClick = (e) => {
-    const router = useRouter();
     router.push(`browse/${e.toLowerCase()}`);
   };
 
