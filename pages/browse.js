@@ -5,11 +5,11 @@ import styles from "../styles/ByIndex.module.css";
 import { getAlphabets } from "./data";
 import Header from "./components/Header";
 
-export default function browseindexes() {
-  const router = useRouter();
+export default function Browseindexes() {
   const [alphabets, setAlphabets] = useState([]);
 
   const onClick = (e) => {
+    const router = useRouter();
     router.push(`browse/${e.toLowerCase()}`);
   };
 
