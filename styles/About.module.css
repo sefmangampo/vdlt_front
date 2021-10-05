@@ -1,0 +1,32 @@
+.container {
+    width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #5D5FEF;
+    }
+    
+    .head {
+      background-color: #444655;
+      height: 80px;
+    }
+    
+    .body{
+      display: flex;
+      flex-direction: column;
+      align-items:center;
+      padding-top: 1em;
+      text-align-last: left;
+      height: 100px;
+      color: #fff;
+    
+    }
+
+    .foreword{
+        color: #fff;
+        margin-top: 1em;
+        padding-left: 2em;
+        padding-right: 2em;
+        line-height: 2;
+        font-weight: 200;
+    }

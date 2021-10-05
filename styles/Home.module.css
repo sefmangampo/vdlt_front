@@ -17,12 +17,13 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+
 }
 
 .title {
   font-size: 40px;
   color: #Fff;
-  margin-top: 2.5em;
+  margin-top: 1.5em;
   font-weight: 400;
 }
 
@@ -41,6 +42,7 @@
 .autoComplete {
   background-color: #Fff;
   text-align: center;
+  color: white;
 }
 
 .subtitle {

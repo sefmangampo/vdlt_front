@@ -36,7 +36,7 @@
     grid-gap: 5px;
 }
 
-.item {
+.item1, .item2, .item3 {
     width: 70px;
     height: 70px;
     display: flex;
@@ -48,4 +48,15 @@
     background-color: #fff;
     border-radius: 2px;
     box-shadow: 2px 2px 3px #444655;
+    cursor: pointer;
+}
+
+.item1 {
+  color: red;
+}
+.item2 {
+  color: orange ;
+}
+.item3{
+  color: green;
 }

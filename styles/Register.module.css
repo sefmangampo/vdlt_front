@@ -1,0 +1,30 @@
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #5D5FEF;
+  }
+  
+  .head {
+    background-color: #444655;
+    height: 80px;
+  }
+  
+  .body{
+      margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 1em;
+    align-items: center;
+    text-align: center;
+    background-color: #Fff;
+  }
+  
+  .formItem{
+      margin-left: 2em;
+      margin-right: 2em;
+  }

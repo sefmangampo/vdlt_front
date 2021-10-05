@@ -1,37 +1,75 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
 import SelectBox from "devextreme-react/select-box";
 import styles from "../../styles/Alphabet.module.css";
 import List from "devextreme-react/list";
+import DataSource from "devextreme/data/data_source";
 
-import { getAlphabets } from "../data/store";
+import { getAlphabets, getEntriesByLetter } from "../data";
+import Header from "../components/Header";
 
 function BrowseSlug({ data }) {
-  console.log(data);
-
   const router = useRouter();
 
-  const items = ["a", "b", "c"];
+  const [items, setItems] = useState([]);
+
+  const ds = new DataSource({
+    store: {
+      data: items,
+      type: "array",
+    },
+    key: "id",
+  });
 
   const onClickBigLetter = () => {
     router.push("/browse");
   };
 
-  const letter = data.letter.slug;
+  useEffect(() => {
+    setItems(data.entries);
+  }, []);
+
+  const onItemClick = ({ itemData }) => {
+    router.push(
+      `/browse/${data.letter.toLowerCase()}/${itemData.orig_word.toLowerCase()}`
+    );
+  };
+
+  const letter = data.letter;
+
+  const inputAttr = {
+    class: styles.inputAttr,
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.head}></div>
+      <div className={styles.head}>
+        <Header />
+      </div>
 
       <div className={styles.body}>
         <div onClick={() => onClickBigLetter()} className={styles.letterHeader}>
           {letter}
         </div>
         <div className={styles.searchBox}>
-          <SelectBox searchEnabled={true} stylingMode="outlined" />
+          <SelectBox
+            inputAttr={inputAttr}
+            dataSource={ds}
+            displayExpr="orig_word"
+            searchEnabled={true}
+            width={200}
+            height={40}
+            showClearButton={true}
+          />
         </div>
       </div>
       <div className={styles.itemList}>
-        <List items={items} />
+        <List
+          dataSource={ds}
+          keyExpr="id"
+          displayExpr="orig_word"
+          onItemClick={onItemClick}
+        />
       </div>
     </div>
   );
@@ -54,8 +92,21 @@ export async function getStaticPaths({ params }) {
 }
 
 export async function getStaticProps({ params }) {
+  let entries = [];
+
+  const d = await getAlphabets();
+  const arr = d.data;
+
+  const x = arr.filter((a) => a.name == params.slug.toUpperCase());
+
+  if (x[0]) {
+    const l = await getEntriesByLetter(x[0].id);
+    entries = l.data;
+  }
+
   const data = {
-    letter: params,
+    letter: params.slug.toUpperCase(),
+    entries: entries,
   };
 
   return { props: { data } };

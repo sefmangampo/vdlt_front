@@ -36,3 +36,8 @@ width: 100vw;
     padding-left: 0.5em;
     color: #fff;
 }
+
+.inputAttr{
+  color:#444655;
+  background-color: #fff;
+}

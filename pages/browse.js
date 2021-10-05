@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
 import styles from "../styles/ByIndex.module.css";
 
-import { getAlphabets } from "./data/store";
+import { getAlphabets } from "./data";
+import Header from "./components/Header";
 
 export default function browseindexes() {
   const router = useRouter();
@@ -23,19 +24,27 @@ export default function browseindexes() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.head}></div>
+      <div className={styles.head}>
+        <Header />
+      </div>
 
       <div className={styles.body}>
         <div className={styles.byIndex}>By Index</div>
 
         <div className={styles.indexContainer}>
           {alphabets.map((item) => {
+            let cn;
+
+            if (item.status === 0) cn = styles.item1;
+            else if (item.status === 1) cn = styles.item2;
+            else cn = styles.item3;
+
             return (
               <div
                 onClick={() => {
                   onClick(item.name);
                 }}
-                className={styles.item}
+                className={cn}
                 key={item.id}
               >
                 {item.name}

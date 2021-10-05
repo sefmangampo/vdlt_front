@@ -13,11 +13,13 @@ width: 100vw;
 
 .body{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items:center;
   padding-top: 1em;
+  
   text-align-last: left;
   height: 100px;
+  color: #fff;
 
 }
 
@@ -40,5 +42,28 @@ width: 100vw;
 
 .itemList{
     background-color: white;
-    height: calc(100vh - 180px);
+    height: calc(95vh - 180px);
+    padding-top: 1em;
+}
+
+.itemTemplate{
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.itemOrig{
+  font-style: italic;
+}
+
+.itemTranslated{
+ font-weight: 500;
+ font-size: 30px;
+}
+
+.itemExample{
+  font-size: 20px;
+  color:indianred;
+  white-space: break-spaces;
 }

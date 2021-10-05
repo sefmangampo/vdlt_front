@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import CustomStore from "devextreme/data/custom_store";
 
 const handleErrors = (response) => {
@@ -10,19 +8,11 @@ const handleErrors = (response) => {
   return response;
 };
 
-export const getAlphabets = async () => {
-  try {
-    const data = await axios.get("http://localhost:8000/api/v1/indexes");
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-//http://localhost:8000/api/v1/indexes
-
-export const getAlphabetStore = () => {
-  const baseURL = "http://localhost:8000/api/v1/indexes";
+export const getStore = (baseURL, token) => {
+  const config = new Headers({
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + token,
+  });
 
   const store = new CustomStore({
     key: "id",
@@ -37,7 +27,8 @@ export const getAlphabetStore = () => {
         .then((response) => {
           return response.json();
         })
-        .catch(() => {
+        .catch((e) => {
+          console.log(e);
           throw "Network Error";
         });
     },
@@ -57,9 +48,7 @@ export const getAlphabetStore = () => {
       return fetch(baseURL, {
         method: "POST",
         body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: config,
       })
         .then(handleErrors)
         .then((res) => res.json())
@@ -70,9 +59,7 @@ export const getAlphabetStore = () => {
     remove: async (data) => {
       return fetch(baseURL + `/${data}`, {
         method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: config,
       })
         .then(handleErrors)
         .catch(() => {
@@ -82,10 +69,8 @@ export const getAlphabetStore = () => {
     update: async (id, values) => {
       return fetch(baseURL + `/${id}`, {
         method: "PATCH",
+        headers: config,
         body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
       })
         .then(handleErrors)
         .catch(() => {

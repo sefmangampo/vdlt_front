@@ -1,51 +1,106 @@
 import styles from "../styles/Home.module.css";
-import { Autocomplete } from 'devextreme-react/autocomplete';
-import Button from "devextreme-react/button"
+import Lookup from "devextreme-react/lookup";
+import DataSource from "devextreme/data/data_source";
+import Button from "devextreme-react/button";
 import { useRouter } from "next/dist/client/router";
+import Header from "./components/Header";
+import { useState, useEffect } from "react";
+import { getEntries, getAlphabets } from "./data";
 
 const elemAtrr = {
-  class: styles.autoComplete
-}
+  class: styles.autoComplete,
+};
 
 const buttonAttr = {
-  class: styles.button
-}
-
-
+  class: styles.button,
+};
 
 export default function Home() {
+  const [wordEntries, setWordEntries] = useState(null);
+  const [alphabets, setAlphabets] = useState(null);
 
-  const router = useRouter()
+  const router = useRouter();
+
+  const ds = new DataSource({
+    store: {
+      type: "array",
+      data: wordEntries,
+    },
+    key: "id",
+    pageSize: 20,
+    paginate: true,
+  });
 
   const onClick = () => {
-    router.push('/browse')
-  }
+    router.push("/browse");
+  };
 
-  return <div className={styles.container}>
+  const initWords = async () => {
+    const res = await getEntries();
+    const al = await getAlphabets();
 
-    <div className={styles.head}>
+    if (al.data) {
+      setAlphabets(al.data);
+    }
 
-    </div>
+    if (res.data) {
+      setWordEntries(res.data);
+    }
+  };
 
-    <div className={styles.body}>
-      <div className={styles.title}>Vocabulary of the Tagalog Language</div>
-      <div className={styles.subtitle}>Based on the Vocabulario de la lengua Tagala</div>
+  useEffect(() => {
+    initWords();
+  }, []);
 
-      <div className={styles.searchbox}>
-        <Autocomplete
-          inputAttr={elemAtrr}
-          stylingMode="outlined"
-          placeholder="Type first name..."
-        />
+  const onItemClick = ({ itemData }) => {
+    const { alphabet_id, orig_word } = itemData;
+
+    const b = alphabets.filter((a) => a.id === alphabet_id);
+    const c = b[0].name.toLowerCase();
+    const d = orig_word.toLowerCase();
+
+    router.push(`/browse/${c}/${d}`);
+  };
+
+  const dropDownOptions = {
+    fullScreen: false,
+  };
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.head}>
+        <Header />
       </div>
-      <div className={styles.browsebutton}>
-        <Button
-          text="Search By Index"
-          elementAttr={buttonAttr}
-          onClick={onClick}
-        />
-      </div>
 
+      <div className={styles.body}>
+        <div className={styles.title}>Vocabulary of the Tagalog Language</div>
+        <div className={styles.subtitle}>
+          Based on the Vocabulario de la lengua Tagala
+        </div>
+
+        <div className={styles.searchbox}>
+          <Lookup
+            inputAttr={elemAtrr}
+            stylingMode="outlined"
+            placeholder="Search for a word..."
+            dataSource={ds}
+            width={300}
+            searchMode="startswith"
+            onItemClick={onItemClick}
+            searchEnabled={true}
+            showDataBeforeSearch={true}
+            displayExpr="orig_word"
+            showCancelButton={true}
+          />
+        </div>
+        <div className={styles.browsebutton}>
+          <Button
+            text="Search By Index"
+            elementAttr={buttonAttr}
+            onClick={onClick}
+          />
+        </div>
+      </div>
     </div>
-  </div>;
+  );
 }
