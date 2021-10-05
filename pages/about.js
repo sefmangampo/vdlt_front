@@ -41,7 +41,7 @@ export default function About() {
         <div className={styles.foreword}>
           <p>
             This project is an attempt to translate words from the book
-            'Vocabulario de Legua Tagala'.
+            &lsquo;Vocabulario de Legua Tagala&lsquo;.
           </p>
           <p>
             I have limited spanish so I rely on Google Translate 70% of the
