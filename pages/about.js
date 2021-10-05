@@ -10,13 +10,12 @@ import { isLoggedIn } from "./data";
 
 export default function About() {
   const [isLogged, setIsLogged] = useState(false);
-
+  const router = useRouter();
   const onClick = async () => {
     if (isLogged) {
       localStorage.removeItem("token");
       setIsLogged(false);
     } else {
-      const router = useRouter();
       router.push("/signin");
     }
   };
