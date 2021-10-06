@@ -6,6 +6,7 @@ import { useRouter } from "next/dist/client/router";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import { getEntries, getAlphabets } from "../data";
+import Head from "next/head"
 
 const elemAtrr = {
   class: styles.autoComplete,
@@ -68,12 +69,18 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Project VDLT</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content="Project attempts to retranslate words from the book Vocabulario de Lengua Tagala"></meta>
+        <meta name="robots" content="index, follow" />
+      </Head>
       <div className={styles.head}>
         <Header />
       </div>
 
       <div className={styles.body}>
-        <div className={styles.title}>Vocabulary of the Tagalog Language</div>
+        <h1 className={styles.title}>Vocabulary of the Tagalog Language</h1>
         <div className={styles.subtitle}>
           Based on the Vocabulario de la lengua Tagala
         </div>
