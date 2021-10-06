@@ -10,14 +10,14 @@ import DataGrid, {
 } from "devextreme-react/data-grid";
 import DataSource from "devextreme/data/data_source";
 import styles from "../styles/Entry.module.css";
-import Header from "./components/Header";
+import Header from "../components/Header";
 
 import {
   getEntriesStore,
   getAlphabets,
   getTranslationStore,
   isLoggedIn,
-} from "./data";
+} from "../data";
 
 const bookPartLU = {
   store: {

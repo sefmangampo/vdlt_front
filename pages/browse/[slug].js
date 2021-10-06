@@ -5,8 +5,8 @@ import styles from "../../styles/Alphabet.module.css";
 import List from "devextreme-react/list";
 import DataSource from "devextreme/data/data_source";
 
-import { getAlphabets, getEntriesByLetter } from "../data";
-import Header from "../components/Header";
+import { getAlphabets, getEntriesByLetter } from "../../data";
+import Header from "../../components/Header";
 
 function BrowseSlug({ data }) {
   const router = useRouter();

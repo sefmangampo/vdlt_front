@@ -9,8 +9,8 @@ import Form, {
 import notify from "devextreme/ui/notify";
 import { useRouter } from "next/dist/client/router";
 
-import { signIn } from "./data";
-import Header from "./components/Header";
+import { signIn } from "../data";
+import Header from "../components/Header";
 
 import styles from "../styles/Register.module.css";
 

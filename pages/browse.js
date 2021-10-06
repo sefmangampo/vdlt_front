@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
 import styles from "../styles/ByIndex.module.css";
 
-import { getAlphabets } from "./data";
-import Header from "./components/Header";
+import { getAlphabets } from "../data";
+import Header from "../components/Header";
 
 export default function Browseindexes() {
   const [alphabets, setAlphabets] = useState([]);

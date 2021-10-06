@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 
 import { useRouter } from "next/dist/client/router";
 import styles from "../../../styles/Entry.module.css";
-import Header from "../../components/Header";
+import Header from "../../../components/Header";
 
 import {
   getAlphabets,
   getEntries,
   getTranslationsByEntry,
   getEntryIdByWord,
-} from "../../data";
+} from "../../../data";
 
 export default function Entry({ data }) {
   const router = useRouter();

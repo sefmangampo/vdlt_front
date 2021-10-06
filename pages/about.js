@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import Header from "./components/Header";
 import styles from "../styles/About.module.css";
 import Button from "devextreme-react/button";
 
 import { useRouter } from "next/dist/client/router";
 
-import { isLoggedIn } from "./data";
+import { isLoggedIn } from "../data";
+import Header from "../components/Header";
 
 export default function About() {
   const [isLogged, setIsLogged] = useState(false);

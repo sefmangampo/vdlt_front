@@ -8,8 +8,8 @@ import DataGrid, {
 
 import DataSource from "devextreme/data/data_source";
 
-import { getAlphabetStore } from "./data";
-import Header from "./components/Header";
+import { getAlphabetStore } from "../data";
+import Header from "../components/Header";
 import styles from "../styles/Add.module.css";
 
 export default function Add() {

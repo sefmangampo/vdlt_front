@@ -3,9 +3,9 @@ import Lookup from "devextreme-react/lookup";
 import DataSource from "devextreme/data/data_source";
 import Button from "devextreme-react/button";
 import { useRouter } from "next/dist/client/router";
-import Header from "./components/Header";
+import Header from "../components/Header";
 import { useState, useEffect } from "react";
-import { getEntries, getAlphabets } from "./data";
+import { getEntries, getAlphabets } from "../data";
 
 const elemAtrr = {
   class: styles.autoComplete,
